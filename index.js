@@ -2,4 +2,4 @@ function sharan = () => {console.log("Sharan")};
 console.log("Additional line got added");
 // For fetch and merge another line
 //For Merge from anoter branch
-//Recent update from remote Gitub-1
+//Recent update from remote Gitub
