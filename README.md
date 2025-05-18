@@ -1,2 +1,0 @@
-# DevSecOps
-Devops project creation
