@@ -1,0 +1,44 @@
+
+**DAY 1**
+
+As a DevOps engineer, mastering Linux is essential for managing infrastructure, automating workflows, and troubleshooting issues. 
+
+Here are some key Linux concepts used daily in DevOps:
+
+### **1. Command Line Basics**
+- `ls -la` – List files with detailed information.
+- `cp file1 file2` – Copy files.
+- `mv file1 file2` – Move or rename files.
+- `rm -rf directory_name` – Remove files or directories.
+
+### **2. User & Permission Management**
+- `chmod 755 file.txt` – Change file permissions.
+- `chown user:group file.txt` – Change file ownership.
+- `sudo` – Execute commands with elevated privileges.
+
+### **3. Process Management**
+- `ps aux` – View running processes.
+- `top` / `htop` – Monitor system performance.
+- `kill -9 PID` – Terminate a process.
+
+### **4. Networking & Firewall**
+- `ping` – Check network connectivity.
+- `netstat -tulnp` – View active network connections.
+- `iptables` – Manage firewall rules.
+
+### **5. Package Management**
+- `apt-get` (Debian-based) / `yum` (RHEL-based) – Install and manage packages.
+- `dpkg` / `rpm` – Work with package files.
+
+### **6. Task Automation**
+- `cron` – Schedule tasks.
+- `systemctl` – Manage system services.
+
+### **7. File & Log Management**
+- `tail -f /var/log/syslog` – Monitor logs in real time.
+- `grep` – Search within files.
+- `awk` / `sed` – Process and manipulate text.
+
+### **8. Containers & Virtualization**
+- `docker` – Manage containers.
+- `kubectl` – Interact with Kubernetes clusters.
