@@ -1,0 +1,62 @@
+Here's a concise set of Linux basic command notes based on your tutorial:
+
+---
+
+### **Basic Linux Commands Cheat Sheet**
+
+#### **1. System Info & Navigation**
+- `pwd` – Print current working directory (shows where you are).  
+- `whoami` – Display current logged-in username.  
+- `id` – Show user and group info (UID/GID).  
+- `echo "text"` – Print text to terminal.  
+- `echo ~` – Show path to your home directory (`/home/username`).  
+
+#### **2. File Operations**
+- `touch file.txt` – Create empty file (or update timestamp if exists).  
+- `echo "text" > file.txt` – Write text to file (overwrites if exists).  
+- `cat file.txt` – View file content.  
+- `cp file.txt copy.txt` – Copy file.  
+- `cp -r dir/ dir_copy/` – Copy directory recursively (`-r`).  
+- `mv file.txt newname.txt` – Rename or move file/directory.  
+- `rm file.txt` – Delete file (permanent!).  
+- `rm -r dir/` – Delete directory recursively.  
+- `rm -i file.txt` – Prompt before deletion (`-i`).  
+- `rm -f file.txt` – Force delete (no prompts, `-f`).  
+
+#### **3. Directory Operations**
+- `mkdir dirname` – Create directory.  
+- `ls` – List files/directories (non-hidden).  
+- `ls -a` – List all files (including hidden `.files`).  
+- `ls -l` – Detailed list (permissions, size, etc.).  
+- `ls -la` – Detailed list + hidden files.  
+- `ls -R dir/` – List recursively (shows subdirectory contents).  
+
+#### **4. Hidden Files**
+- Files/dirs starting with `.` are hidden (e.g., `.hiddenfile.txt`).  
+- Use `ls -a` to see them.  
+
+#### **5. File System Structure**
+- `/` – Root directory (top of the hierarchy).  
+- `~` – Shortcut for your home directory (`/home/username`).  
+
+#### **6. Installing Software**
+- `sudo apt install htop` – Install packages (e.g., `htop` for system monitoring).  
+- `htop` – Interactive process viewer (like Task Manager).  
+
+#### **7. Shortcuts**
+- `ll` – Alias for `ls -la` (common shortcut).  
+
+---
+
+### **Key Concepts**
+- **Recursive (`-r`)** – Apply to directories and their contents.  
+- **Hidden Files** – Prefix with `.` (e.g., `.bashrc`).  
+- **Paths**:  
+  - `./` – Current directory.  
+  - `../` – Parent directory.  
+
+> ⚠️ **Warning**: `rm` is permanent! Use `-i` for safety.  
+
+--- 
+
+This covers the basics from your tutorial. Let me know if you'd like expansions on any section!
