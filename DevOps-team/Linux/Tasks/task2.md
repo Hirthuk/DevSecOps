@@ -8,7 +8,6 @@ touch devops_workspace/project_notes.txt
 Set Permission for the file
 chmod 650 project_notes.txt
 
-<!-- Notes to verify the permission -->
 ```
 Owner | Group | Others
 r--   | rwx   | ---
