@@ -1,0 +1,34 @@
+# Quick structure:
+# - apiVersion: API group/version (e.g., apps/v1)
+# - kind: resource type (Deployment, Service, etc.)
+# - metadata: name, labels, annotations
+# - spec: desired state (replicas, selector, template)
+# - template: pod template (metadata, spec)
+# - containers: list of containers (name, image, ports, env, etc.)
+# - ports: containerPort (container networking)
+#
+# Mnemonic (initials): AKMSTCP -> "A King Makes Ships To Carry People"
+# Mapping: A=apiVersion, K=kind, M=metadata, S=spec, T=template, C=containers, P=ports
+# Use this as a quick mental checklist when authoring Kubernetes resource YAMLs.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels: 
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80

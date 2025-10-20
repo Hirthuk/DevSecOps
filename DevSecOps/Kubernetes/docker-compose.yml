@@ -1,0 +1,57 @@
+version: '3.8'
+
+# Define the services for the multi-container application
+services:
+  # Configuration for the app service
+  app:
+    # Build the container using the Dockerfile stored locally in the current directory
+    build: .
+    # Map port 5000 of the host to port 5000 of the container
+    ports:
+      - "5000:5000"
+    # Attach the service to the user-defined network named cool_network
+    networks:
+      - cool_network 
+    # Define dependency on the db service, waiting for it to be healthy before starting
+    depends_on:
+      db:
+        condition: service_healthy
+    # Establish a link with the db service for legacy compatibility (optional)
+    links: 
+        - db
+
+  # Configuration for the db service
+  db:
+    # Use the latest postgres image from Docker Hub
+    image: postgres:latest
+    # Environment variables for PostgreSQL configuration
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+    # Map port 5432 of the host to port 5432 of the container
+    ports:
+      - "5432:5432"
+    # Ensure the service restarts always
+    restart: always
+    # Mount a volume named postgres_data_new for persisting PostgreSQL data
+    volumes:
+      - postgres_data_new:/var/lib/postgresql/data
+    # Attach the service to the user-defined network named cool_network
+    networks:
+      - cool_network
+    # Configure health check to ensure service readiness
+    healthcheck: 
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB} -t 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 10s
+
+# Define named volumes
+volumes:
+  postgres_data_new:
+
+# Define user-defined networks
+networks:
+  cool_network:
