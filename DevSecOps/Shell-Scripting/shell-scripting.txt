@@ -1,0 +1,148 @@
+echo -> Command to print the argument passed in the Termina -> echo Sharan
+cat -> Command to view the content of the file in the Terminal
+vim -> Popular text editor used to edit content of the files in the Terminal
+            i -> Insert mode to start writing
+            esc -> escape to quit the Insert mode
+            :w -> To Save the written data
+            :wq -> To save the quit the vim text editior
+            :q! -> Ignore the changes made in the file and quit the vim text editor
+
+ls -> To list the directories/folders in the current directories
+pwd -> Will show the current working directory
+
+bash shellscript.sh -> To Run a Shell script file
+echo $SHELL -> To return what type of shell we are using
+
+As a best practice always mention what kind of Shell Interpreter we want to use in the
+Shell script file using shebang notation -> 
+        echo $SHELL -> bin/bash -> Outcome -> at top of the shell script file -> #!/bin/bash -> so the ssytem
+        know we have to use bash for running this file and next we don't need to mention bash shellscript.sh
+
+Make sure you have executable permission to execute the file -> ls -l (l flag to list the files and directories with Permissions).
+If you don't see x along with r and w you have to add the persmission using ->     chmod u+x shellscript.sh (To enable only for user) chmod +x shellscript.sh 
+when you want to set the permission for all users
+
+Post that can run the shell script with ./shellscript.sh
+
+
+Variables:
+
+create a varaialbe and assign a value -> MY_NAME="Sharankumar"
+
+To get the User input from the Shell sccript use read command -> read FIRST_NAME so the entered value will be stored in the FIRST_NAME variable.
+
+Positional argumets : echo MyFirst_name last_name here echo is 0th MyFirst_name is 1st and last_name 2nd positional argument and it can be taken as input
+like $1 $2 in the shellscript and pass it while calling
+
+ ./posarg.sh Sharan Kumar Here Sharan is $1 Positional argument and $2 is 3rd $0 is the first that is that script -> Inside script we put echo Hello $1 $2 it will return
+ Hello Sharan Kumar
+
+ Piping -> Used to filter out or do operation from the result of the before pipe command - ls -l user/bin | grep bash (This will just serch and send the matching bash text from the outputs)
+
+ Output Direction -> To share the ouput of the command to a file
+    echo "Hello world" > Hello.txt replace the all the content
+    echo "Greetings" >Hello.txt append additionally
+
+wc -w is used to get the number of words in the file
+
+Input Direction < lesser than operator to get the input from the file or value
+
+wc -w < Hello.txt return -> 6
+
+to Send input as multiple line use << double symbol like cat << EOD -> when u enter this line file will entered
+
+<<< for enter single line
+
+| Operator | Meaning                                                  | Example                             | Explanation                                                  |
+| -------- | -------------------------------------------------------- | ----------------------------------- | ------------------------------------------------------------ |
+| `<`      | Takes input **from a file**                              | `wc -w < hello.txt`                 | Sends the contents of `hello.txt` as input to `wc`.          |
+| `<<`     | **Heredoc (multiple lines)** input until a **delimiter** | `cat << EOD Hello World Line 2 EOD` | Sends multiple lines as input to `cat` until it reads `EOD`. |
+| `<<<`    | **Herestring (single line)** input                       | `cat <<< "Hello World"`             | Sends a **single line** string as input to the command.      |
+
+# Read from file
+wc -l < myfile.txt
+
+# Read multiple lines
+cat << EOF
+This is line 1
+This is line 2
+EOF
+
+# Read single line
+grep "Hello" <<< "Hello DevOps World"
+
+Test command -> [ hello=hello ] will return 0 if true or 1 if false -> echo $? we output the previous command value used together
+or echo [ hello=hello ]
+
+
+sharankumarp02@kubernetes-instance-1:~$ [ hello=hello ]
+sharankumarp02@kubernetes-instance-1:~$ echo $?
+0
+
+if elif else -> Statements 
+
+Arrays, for loop, functions can be created in same as other programming knowledge with shell sripting
+
+---
+
+### 🧠 **AWK – Text Processing Tool**
+
+* Used for **extracting**, **filtering**, and **analyzing** text (line by line).
+* Works with **fields/columns**.
+
+**Syntax:**
+
+```bash
+awk 'pattern { action }' file
+```
+
+**Common uses:**
+
+* `awk '{print $1}' file` → print 1st column
+* `awk -F: '{print $1}' /etc/passwd` → custom separator `:`
+* `awk '/error/ {print}' log.txt` → print lines with “error”
+* `awk '$3 > 100 {print $1, $3}' data.txt` → condition
+
+**Special vars:**
+`$0` (whole line), `$1,$2…` (fields), `NR` (line no), `NF` (no. of fields)
+
+---
+
+### 🧰 **SED – Stream Editor**
+
+* Used for **find**, **replace**, or **delete** text in files.
+
+**Syntax:**
+
+```bash
+sed 'command' file
+```
+
+**Common uses:**
+
+* `sed 's/foo/bar/' file` → replace first “foo”
+* `sed 's/foo/bar/g' file` → replace all “foo”
+* `sed -i 's/dev/prod/g' app.conf` → replace in file
+* `sed '/error/d' file` → delete lines with “error”
+* `sed -n '3p' file` → print line 3
+
+---
+
+### ⚙️ **Quick Difference**
+
+| Task                   | Tool     |
+| ---------------------- | -------- |
+| Extract columns        | 🟢 `awk` |
+| Replace text           | 🟢 `sed` |
+| Conditional logic      | 🟢 `awk` |
+| Delete or modify lines | 🟢 `sed` |
+
+---
+
+✅ **Examples**
+
+```bash
+awk -F: '{print $1}' /etc/passwd    # list usernames
+sed -i 's/dev/prod/g' config.txt    # replace dev→prod
+```
+
